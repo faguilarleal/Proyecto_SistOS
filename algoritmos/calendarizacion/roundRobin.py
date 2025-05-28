@@ -2,7 +2,7 @@
 
 from collections import deque
 
-def rr_scheduler(procesos: dict, quantum: int):
+def rr_scheduler(args: dict):
     """
     Algoritmo Round Robin.
     
@@ -13,6 +13,9 @@ def rr_scheduler(procesos: dict, quantum: int):
     Retorna:
     - Lista de tuplas (PID, inicio, fin), útil para el diagrama de Gantt
     """
+    procesos = args["procesos"]
+    quantum = args["quantum"]
+
     # Convertir a lista de procesos con estado adicional
     todos = [
         {"PID": pid, "AT": datos["AT"], "BT": datos["BT"], "restante": datos["BT"]}

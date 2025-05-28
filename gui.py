@@ -21,11 +21,11 @@ category = st.radio("Select a Category:", ["Calendarization", "Synchronization"]
 
 # Step 2: Sub-options
 algorithm = None
+quantum = None
 if category == "Calendarization":
-    algorithm = st.selectbox("Choose an algorithm:", input_algorithm_map.keys())
-    quantum = None
+    algorithm = st.selectbox("Choose an algorithm:", input_algorithm_map.keys())    
     if algorithm == "Round Robin":
-        quantum = st.number_input("Quantum value:", min_value=1, value=4)
+        quantum = st.number_input("Quantum value:", min_value=1, value=4)        
 
 elif category == "Synchronization":
     algorithm = st.selectbox("Choose a method:", [
@@ -48,15 +48,13 @@ if run:
     args = {
         "procesos": procesos,
         "recursos": recursos,
-        "acciones_por_ciclo": acciones_por_ciclo
+        "acciones_por_ciclo": acciones_por_ciclo,
+        "quantum" : quantum
     }
 
     st.success(f"Running {algorithm} under {category}...")
-
-    ejecuciones = None
-    if category == "Calendarization":
-        ejecuciones = input_algorithm_map[algorithm](args)
-
+        
+    ejecuciones = input_algorithm_map[algorithm](args)
 
     # Step 5: Plot (just a placeholder example)
     fig = dibujar_gantt(ejecuciones=ejecuciones)

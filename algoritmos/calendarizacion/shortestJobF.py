@@ -1,6 +1,6 @@
 # sjf_scheduler.py
 
-def sjf_scheduler(procesos: dict):
+def sjf_scheduler(args: dict):
     """
     Algoritmo Shortest Job First (no expropiativo).
     Recibe un diccionario de procesos y retorna una lista de tuplas:
@@ -14,6 +14,8 @@ def sjf_scheduler(procesos: dict):
 
     Retorna: Lista de ejecuciones [(PID, inicio, fin), ...]
     """
+    procesos = args["procesos"]
+
     procesos_restantes = [
         {"PID": pid, **datos} for pid, datos in procesos.items()
     ]
