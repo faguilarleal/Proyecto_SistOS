@@ -1,6 +1,6 @@
 # srtf_scheduler.py
 
-def srtf_scheduler(procesos: dict):
+def srtf_scheduler(args: dict):
     """
     Algoritmo SRTF (Shortest Remaining Time First, expropiativo).
     Recibe un diccionario de procesos y retorna una lista de ejecuciones:
@@ -13,6 +13,8 @@ def srtf_scheduler(procesos: dict):
 
     Retorna: Lista [(PID, inicio, fin), ...] indicando tramos ejecutados.
     """
+    procesos = args["procesos"]
+
     procesos_restantes = [
         {"PID": pid, "AT": datos["AT"], "BT": datos["BT"], "restante": datos["BT"]}
         for pid, datos in procesos.items()

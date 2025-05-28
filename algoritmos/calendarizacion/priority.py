@@ -1,4 +1,4 @@
-def priority_scheduler(procesos: dict):
+def priority_scheduler(args: dict):
     """
     Algoritmo Priority No Preemptive: recibe un diccionario de procesos y retorna una lista
     con el orden de ejecución (PID, inicio, fin).
@@ -11,6 +11,8 @@ def priority_scheduler(procesos: dict):
 
     Retorna: Lista de tuplas (PID, inicio, fin) para construir el diagrama de Gantt.
     """
+    procesos = args["procesos"]
+
     # Lista de procesos no ejecutados
     lista_procesos = [
         {"PID": pid, **datos} for pid, datos in procesos.items()
