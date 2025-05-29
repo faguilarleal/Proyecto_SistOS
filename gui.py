@@ -11,7 +11,9 @@ from algoritmos.calendarizacion.shortestRemT import srtf_scheduler
 from algoritmos.sincronizacion.simulador import Simulador
 
 def aux_sim_function(args: dict):
-    sim = Simulador(procesos=args["procesos"], recursos=args["recursos"], acciones=["acciones"], mecanismo=args["mecanismo"])
+    print("acciones 2\n")
+    print(args["acciones_por_ciclo"])
+    sim = Simulador(procesos=args["procesos"], recursos=args["recursos"], acciones=args["acciones_por_ciclo"], mecanismo=args["mecanismo"])
     return sim.simular()
 
 #
@@ -37,7 +39,7 @@ category = st.radio("Select a Category:", ["Calendarization", "Synchronization"]
 algorithm = None
 quantum = None
 if category == "Calendarization":
-    algorithm = st.selectbox("Choose an algorithm:", input_algorithm_map.keys())    
+    algorithm = st.selectbox("Choose an algorithm:", input_algorithm_map_cal.keys())    
     if algorithm == "Round Robin":
         quantum = st.number_input("Quantum value:", min_value=1, value=4)        
 
@@ -68,8 +70,14 @@ if run:
     }
 
     st.success(f"Running {algorithm} under {category}...")
-      
-    ejecuciones = input_algorithm_map[algorithm](args)
+
+
+    if category == "Calendarization":
+        ejecuciones = input_algorithm_map_cal[algorithm](args)    
+
+    elif category == "Synchronization":
+        ejecuciones = input_algorithm_map_sync[algorithm](args)
+    
 
     # Step 5: Plot (just a placeholder example)
     fig = dibujar_gantt(ejecuciones=ejecuciones)
