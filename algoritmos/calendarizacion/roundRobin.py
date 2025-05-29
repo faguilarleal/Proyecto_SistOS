@@ -76,15 +76,15 @@ def rr_scheduler(args: dict):
 
 
 # --------- PRUEBA ------------
-procesos = {
-    "P1": {"BT": 8, "AT": 0, "Priority": 1},
-    "P2": {"BT": 4, "AT": 1, "Priority": 2},
-    "P3": {"BT": 3, "AT": 2, "Priority": 3}
-}
+# procesos = {
+#     "P1": {"BT": 8, "AT": 0, "Priority": 1},
+#     "P2": {"BT": 4, "AT": 1, "Priority": 2},
+#     "P3": {"BT": 3, "AT": 2, "Priority": 3}
+# }
 
-orden = rr_scheduler(procesos, quantum=2)
+# orden = rr_scheduler(procesos, quantum=2)
 
-for evento in orden:
-    print(evento)
-# Ejemplo de salida:
-# [('P1', 0, 2), ('P2', 2, 4), ('P3', 4, 6), ('P1', 6, 8), ('P2', 8, 10), ('P1', 10, 14)]
+# for evento in orden:
+#     print(evento)
+# # Ejemplo de salida:
+# # [('P1', 0, 2), ('P2', 2, 4), ('P3', 4, 6), ('P1', 6, 8), ('P2', 8, 10), ('P1', 10, 14)]
