@@ -64,15 +64,15 @@ def srtf_scheduler(args: dict):
 
 
 # --------------prueba-----------
-procesos = {
-    "P1": {"BT": 8, "AT": 0, "Priority": 1},
-    "P2": {"BT": 4, "AT": 1, "Priority": 2},
-    "P3": {"BT": 2, "AT": 2, "Priority": 3}
-}
+# procesos = {
+#     "P1": {"BT": 8, "AT": 0, "Priority": 1},
+#     "P2": {"BT": 4, "AT": 1, "Priority": 2},
+#     "P3": {"BT": 2, "AT": 2, "Priority": 3}
+# }
 
-orden = srtf_scheduler(procesos)
+# orden = srtf_scheduler(procesos)
 
-for evento in orden:
-    print(evento)
-# Posible salida:
-# [('P1', 0, 1), ('P2', 1, 2), ('P3', 2, 4), ('P2', 4, 6), ('P1', 6, 13)]
+# for evento in orden:
+#     print(evento)
+# # Posible salida:
+# # [('P1', 0, 1), ('P2', 1, 2), ('P3', 2, 4), ('P2', 4, 6), ('P1', 6, 13)]

@@ -14,7 +14,7 @@ def fifo_scheduler(args: dict):
     Retorna: Lista de tuplas (PID, inicio, fin) para construir el diagrama de Gantt.
     """
     procesos = args["procesos"]
-    
+
     # Convertimos el diccionario en una lista ordenada por Arrival Time
     lista_procesos = sorted([
         {"PID": pid, **datos} for pid, datos in procesos.items()
@@ -41,16 +41,16 @@ def fifo_scheduler(args: dict):
 
 
 # -------------- PRUEBA ---------------
-procesos = {
-    "P1": {"BT": 8, "AT": 0, "Priority": 1},
-    "P2": {"BT": 4, "AT": 2, "Priority": 3},
-    "P3": {"BT": 3, "AT": 5, "Priority": 2}
-}
+# procesos = {
+#     "P1": {"BT": 8, "AT": 0, "Priority": 1},
+#     "P2": {"BT": 4, "AT": 2, "Priority": 3},
+#     "P3": {"BT": 3, "AT": 5, "Priority": 2}
+# }
 
-orden_ejecucion = fifo_scheduler(procesos)
+# orden_ejecucion = fifo_scheduler(procesos)
 
-for p in orden_ejecucion:
-    print(p)
-# Salida esperada: lista con tuplas (PID, inicio, fin)
-# [('P1', 0, 8), ('P2', 8, 12), ('P3', 12, 15)]
+# for p in orden_ejecucion:
+#     print(p)
+# # Salida esperada: lista con tuplas (PID, inicio, fin)
+# # [('P1', 0, 8), ('P2', 8, 12), ('P3', 12, 15)]
 

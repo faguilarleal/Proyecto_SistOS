@@ -45,9 +45,9 @@ def priority_scheduler(args: dict):
     return resultado
 
 
-procesos = {
-    "P1": {"BT": 10, "AT": 0, "Priority": 3},
-    "P2": {"BT": 1,  "AT": 2, "Priority": 1},
-    "P3": {"BT": 2,  "AT": 1, "Priority": 4},
-    "P4": {"BT": 1,  "AT": 3, "Priority": 2},
-}
+# procesos = {
+#     "P1": {"BT": 10, "AT": 0, "Priority": 3},
+#     "P2": {"BT": 1,  "AT": 2, "Priority": 1},
+#     "P3": {"BT": 2,  "AT": 1, "Priority": 4},
+#     "P4": {"BT": 1,  "AT": 3, "Priority": 2},
+# }

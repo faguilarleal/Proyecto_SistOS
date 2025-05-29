@@ -44,15 +44,15 @@ def sjf_scheduler(args: dict):
     return completados
 # -------------- PRUEBA ---------------
 
-procesos = {
-    "P1": {"BT": 8, "AT": 0, "Priority": 1},
-    "P2": {"BT": 4, "AT": 2, "Priority": 3},
-    "P3": {"BT": 2, "AT": 5, "Priority": 2}
-}
+# procesos = {
+#     "P1": {"BT": 8, "AT": 0, "Priority": 1},
+#     "P2": {"BT": 4, "AT": 2, "Priority": 3},
+#     "P3": {"BT": 2, "AT": 5, "Priority": 2}
+# }
 
-orden = sjf_scheduler(procesos)
+# orden = sjf_scheduler(procesos)
 
-for evento in orden:
-    print(evento)
-# Ejemplo de salida:
-# [('P1', 0, 8), ('P3', 8, 10), ('P2', 10, 14)]
+# for evento in orden:
+#     print(evento)
+# # Ejemplo de salida:
+# # [('P1', 0, 8), ('P3', 8, 10), ('P2', 10, 14)]

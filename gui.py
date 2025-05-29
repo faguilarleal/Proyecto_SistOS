@@ -4,14 +4,18 @@ import numpy as np
 from chart import dibujar_gantt
 from file_reader import read_files
 from algoritmos.calendarizacion.fifo import fifo_scheduler
+from algoritmos.calendarizacion.priority import priority_scheduler
+from algoritmos.calendarizacion.roundRobin import rr_scheduler
+from algoritmos.calendarizacion.shortestJobF import sjf_scheduler
+from algoritmos.calendarizacion.shortestRemT import srtf_scheduler
 
 #
 input_algorithm_map = {
     "First In First Out": fifo_scheduler,
-    "Shortest Job First": "",
-    "Shortest Remaining Time": "",
-    "Round Robin": "",
-    "Priority": ""
+    "Shortest Job First": sjf_scheduler,
+    "Shortest Remaining Time": srtf_scheduler,
+    "Round Robin": rr_scheduler,
+    "Priority": priority_scheduler
 }
 
 st.title("CPU Simulation App")
@@ -53,7 +57,7 @@ if run:
     }
 
     st.success(f"Running {algorithm} under {category}...")
-        
+      
     ejecuciones = input_algorithm_map[algorithm](args)
 
     # Step 5: Plot (just a placeholder example)
