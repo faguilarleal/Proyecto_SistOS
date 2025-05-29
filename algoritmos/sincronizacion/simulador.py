@@ -1,8 +1,8 @@
-from mutex import * 
-from semaforo import * 
+from mutex import Mutex
+from semaforo import Semaphore
 
 class Simulador:
-    def __init__(self, procesos, recursos, acciones, mecanismo="mutex"):
+    def __init__(self, procesos, recursos, acciones, mecanismo="Mutex Locks"):
         self.tiempo = 0
         self.procesos = procesos
         self.recursos = self.init_recursos(recursos, mecanismo)
@@ -13,7 +13,7 @@ class Simulador:
     def init_recursos(self, recursos, mecanismo):
         res = {}
         for nombre, count in recursos.items():
-            if mecanismo == "mutex":
+            if mecanismo == "Mutex Locks":
                 res[nombre] = Mutex()
             else:
                 res[nombre] = Semaphore(count)
@@ -43,25 +43,25 @@ class Simulador:
         return self.eventos
 
 
-# Entrada proporcionada
-procesos = {
-    "P1": {"BT": 8, "AT": 0, "Priority": 1},
-    "P2": {"BT": 4, "AT": 1, "Priority": 2},
-}
+# # Entrada proporcionada
+# procesos = {
+#     "P1": {"BT": 8, "AT": 0, "Priority": 1},
+#     "P2": {"BT": 4, "AT": 1, "Priority": 2},
+# }
 
-recursos = {
-    "R1": 1,
-}
+# recursos = {
+#     "R1": 1,
+# }
 
-acciones = [
-    {"PID": "P1", "ACCION": "READ", "RECURSO": "R1", "CICLO": 0},
-    {"PID": "P2", "ACCION": "READ", "RECURSO": "R1", "CICLO": 0},
-    {"PID": "P1", "ACCION": "WRITE", "RECURSO": "R1", "CICLO": 2},
-]
+# acciones = [
+#     {"PID": "P1", "ACCION": "READ", "RECURSO": "R1", "CICLO": 0},
+#     {"PID": "P2", "ACCION": "READ", "RECURSO": "R1", "CICLO": 0},
+#     {"PID": "P1", "ACCION": "WRITE", "RECURSO": "R1", "CICLO": 2},
+# ]
 
-# Ejecutar simulación
-sim = Simulador(procesos, recursos, acciones, mecanismo="mutex")  # o "semaphore"
-eventos = sim.simular(ciclos=5)
+# # Ejecutar simulación
+# sim = Simulador(procesos, recursos, acciones, mecanismo="mutex")  # o "semaphore"
+# eventos = sim.simular(ciclos=5)
 
-for evento in eventos:
-    print(evento)
+# for evento in eventos:
+#     print(evento)

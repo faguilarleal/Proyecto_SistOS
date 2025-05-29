@@ -8,14 +8,24 @@ from algoritmos.calendarizacion.priority import priority_scheduler
 from algoritmos.calendarizacion.roundRobin import rr_scheduler
 from algoritmos.calendarizacion.shortestJobF import sjf_scheduler
 from algoritmos.calendarizacion.shortestRemT import srtf_scheduler
+from algoritmos.sincronizacion.simulador import Simulador
+
+def aux_sim_function(args: dict):
+    sim = Simulador(procesos=args["procesos"], recursos=args["recursos"], acciones=["acciones"], mecanismo=args["mecanismo"])
+    return sim.simular()
 
 #
-input_algorithm_map = {
+input_algorithm_map_cal = {
     "First In First Out": fifo_scheduler,
     "Shortest Job First": sjf_scheduler,
     "Shortest Remaining Time": srtf_scheduler,
     "Round Robin": rr_scheduler,
-    "Priority": priority_scheduler
+    "Priority": priority_scheduler,
+}
+
+input_algorithm_map_sync = {
+    "Mutex Locks": aux_sim_function,
+    "Semaphore": aux_sim_function
 }
 
 st.title("CPU Simulation App")
@@ -53,7 +63,8 @@ if run:
         "procesos": procesos,
         "recursos": recursos,
         "acciones_por_ciclo": acciones_por_ciclo,
-        "quantum" : quantum
+        "quantum" : quantum,
+        "mecanismo": algorithm
     }
 
     st.success(f"Running {algorithm} under {category}...")
