@@ -1,24 +1,18 @@
 # fifo_scheduler.py
-
-def fifo_scheduler(args: dict):
-    """
-    Algoritmo FIFO: recibe un diccionario de procesos y retorna una lista
-    con el orden de ejecución (PID, inicio, fin).
-
-    procesos: {
-        "P1": {"BT": 8, "AT": 0, "Priority": 1},
-        "P2": {"BT": 4, "AT": 2, "Priority": 2},
-        ...
-    }
-
+"""
     Retorna: Lista de tuplas (PID, inicio, fin) para construir el diagrama de Gantt.
-    """
+"""
+def fifo_scheduler(args: dict):
+    
     procesos = args["procesos"]
 
     # Convertimos el diccionario en una lista ordenada por Arrival Time
-    lista_procesos = sorted([
-        {"PID": pid, **datos} for pid, datos in procesos.items()
-    ], key=lambda p: p["AT"])
+    lista_procesos = []
+    for pid in procesos:
+        datos = procesos[pid]
+        datos["PID"] = pid
+        lista_procesos.append(datos)
+
 
     tiempo_actual = 0
     resultado = []

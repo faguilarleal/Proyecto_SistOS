@@ -3,16 +3,7 @@
 from collections import deque
 
 def rr_scheduler(args: dict):
-    """
-    Algoritmo Round Robin.
-    
-    Recibe:
-    - procesos: diccionario { PID: {BT, AT, Priority} }
-    - quantum: entero con el valor del quantum asignado
 
-    Retorna:
-    - Lista de tuplas (PID, inicio, fin), útil para el diagrama de Gantt
-    """
     procesos = args["procesos"]
     quantum = args["quantum"]
 

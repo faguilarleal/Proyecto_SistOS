@@ -1,22 +1,17 @@
 import streamlit as st
 import matplotlib.pyplot as plt
 import numpy as np
-from chart import dibujar_gantt
+from chart import animar_gantt_streamlit
 from file_reader import read_files
 from algoritmos.calendarizacion.fifo import fifo_scheduler
 from algoritmos.calendarizacion.priority import priority_scheduler
 from algoritmos.calendarizacion.roundRobin import rr_scheduler
 from algoritmos.calendarizacion.shortestJobF import sjf_scheduler
 from algoritmos.calendarizacion.shortestRemT import srtf_scheduler
-from algoritmos.sincronizacion.simulador import Simulador
+from algoritmos.sincronizacion.mutex import simular_mutex
+from algoritmos.sincronizacion.semaforo import simular_semaforo
 
-def aux_sim_function(args: dict):
-    print("acciones 2\n")
-    print(args["acciones_por_ciclo"])
-    sim = Simulador(procesos=args["procesos"], recursos=args["recursos"], acciones=args["acciones_por_ciclo"], mecanismo=args["mecanismo"])
-    return sim.simular()
 
-#
 input_algorithm_map_cal = {
     "First In First Out": fifo_scheduler,
     "Shortest Job First": sjf_scheduler,
@@ -26,8 +21,8 @@ input_algorithm_map_cal = {
 }
 
 input_algorithm_map_sync = {
-    "Mutex Locks": aux_sim_function,
-    "Semaphore": aux_sim_function
+    "Mutex Locks": simular_mutex,
+    "Semaphore": simular_semaforo
 }
 
 st.title("CPU Simulation App")
@@ -80,5 +75,5 @@ if run:
     
 
     # Step 5: Plot (just a placeholder example)
-    fig = dibujar_gantt(ejecuciones=ejecuciones)
+    fig = animar_gantt_streamlit(ejecuciones=ejecuciones)
     st.pyplot(fig)
